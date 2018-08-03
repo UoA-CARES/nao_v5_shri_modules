@@ -23,3 +23,16 @@ visit https://developer.softbankrobotics.com. Login and download "Choregraphe 2.
         $ python
         >>> import naoqi
         <module 'naoqi' from '/usr/local/opt/pynaoqi/lib/python2.7/site-packages/naoqi.pyc'>
+
+- Install nao packages
+
+        $ sudo apt install ros-kinetic-nao-robot
+        $ sudo apt install ros-kinetic-nao-meshes
+
+- Install gestures to NAO robot
+
+launch Choregraphe and connect to robot.
+
+load project that is located at nao_shri_render/data/sm_motion/motion.pml
+
+At Robot application tab, push the button Package and install current project to the robot

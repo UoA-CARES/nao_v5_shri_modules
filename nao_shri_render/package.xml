@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>nao_shri_render</name>
+  <version>0.0.0</version>
+  <description>The nao_shri_render package</description>
+
+  <maintainer email="byeongkyu@gmail.com">Byeong-Kyu Ahn</maintainer>
+  <url type="website">https://github.com/byeongkyu/nao_v5_shri_modules</url>
+
+  <license>BSD</license>
+
+  <author email="byeongkyu@gmail.com">Byeong-Kyu Ahn</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>mind_msgs</depend>
+  <depend>nao_robot</depend>
+
+  <export>
+  </export>
+</package>

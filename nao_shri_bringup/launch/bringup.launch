@@ -1,0 +1,63 @@
+<launch>
+    <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)" />
+    <arg name="nao_port" default="$(optenv NAO_PORT 9559)" />
+    <arg name="motion_file" default="$(find nao_shri_render)/config/motions.yaml"/>
+
+    <!-- Launch Basic package for running -->
+    <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg" clear_params="true">
+        <rosparam command="load" file="$(find nao_bringup)/config/nao_analysers.yaml" />
+    </node>
+
+    <include file="$(find nao_description)/launch/robot_state_publisher.launch" >
+        <arg name="version" value="V50" />
+    </include>
+
+    <include file="$(find naoqi_driver_py)/launch/naoqi_driver.launch">
+        <arg name="nao_ip" value="$(arg nao_ip)" />
+        <arg name="nao_port" value="$(arg nao_port)" />
+    </include>
+
+    <include file="$(find nao_apps)/launch/walker.launch" >
+        <arg name="nao_ip" value="$(arg nao_ip)" />
+        <arg name="nao_port" value="$(arg nao_port)" />
+	</include>
+
+    <include file="$(find naoqi_pose)/launch/pose_manager.launch" >
+        <arg name="nao_ip" value="$(arg nao_ip)" />
+        <arg name="nao_port" value="$(arg nao_port)" />
+	</include>
+
+    <!-- Launch Idle behavior -->
+    <node name="behavior_idle_behavior" type="render_idle_behavior.py" pkg="nao_shri_render" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
+
+    <!-- Launch Expressions -->
+    <node name="render_facial_expression" type="render_facial_expression.py" pkg="nao_shri_render" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
+    <node name="render_speech" type="render_speech.py" pkg="nao_shri_render" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
+    <node name="render_gesture" type="render_gesture.py" pkg="nao_shri_render" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen">
+        <param name="motion_file" value="$(arg motion_file)"/>
+    </node>
+
+    <node name="render_gaze" type="render_gaze.py" pkg="nao_shri_render" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
+    <!-- Nao perceptions -->
+    <include file="$(find nao_apps)/launch/tactile.launch">
+        <arg name="nao_ip" value="$(arg nao_ip)" />
+        <arg name="nao_port" value="$(arg nao_port)" />
+    </include>
+
+    <node name="hand_touch_detector" type="hand_touch_detector.py" pkg="nao_shri_perception" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
+    <node name="loud_sound_detector" type="loud_sound_detector.py" pkg="nao_shri_perception" required="true"
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
+
+</launch>

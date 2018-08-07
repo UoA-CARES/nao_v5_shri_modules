@@ -1,6 +1,7 @@
 <launch>
     <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)" />
     <arg name="nao_port" default="$(optenv NAO_PORT 9559)" />
+    <arg name="use_nao_speech" default="true" />
     <arg name="motion_file" default="$(find nao_shri_render)/config/motions.yaml"/>
 
     <!-- Launch Basic package for running -->
@@ -27,6 +28,7 @@
         <arg name="nao_port" value="$(arg nao_port)" />
 	</include>
 
+
     <!-- Launch Idle behavior -->
     <node name="behavior_idle_behavior" type="render_idle_behavior.py" pkg="nao_shri_render" required="true"
         args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
@@ -37,7 +39,7 @@
         args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
 
     <node name="render_speech" type="render_speech.py" pkg="nao_shri_render" required="true"
-        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+        args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" if="$(arg use_nao_speech)"/>
 
     <node name="render_gesture" type="render_gesture.py" pkg="nao_shri_render" required="true"
         args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen">
@@ -46,6 +48,7 @@
 
     <node name="render_gaze" type="render_gaze.py" pkg="nao_shri_render" required="true"
         args="--pip=$(arg nao_ip) --pport=$(arg nao_port)"  output="screen" />
+
 
     <!-- Nao perceptions -->
     <include file="$(find nao_apps)/launch/tactile.launch">

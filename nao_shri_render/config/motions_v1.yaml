@@ -1,0 +1,102 @@
+neutral: [
+    sm_tag/neutral/motion1,
+    sm_tag/neutral/motion2,
+    sm_tag/neutral/motion3,
+    sm_tag/neutral/motion4,
+    sm_tag/neutral/motion5,
+    sm_tag/neutral/motion6,
+    sm_tag/neutral/motion7,
+    sm_tag/neutral/motion8,
+    sm_tag/neutral/motion9,
+    sm_tag/neutral/motion10,
+    sm_tag/neutral/motion11,
+    sm_tag/neutral/motion12,
+    sm_tag/neutral/motion13,
+    sm_tag/neutral/motion14,
+    sm_tag/neutral/motion15,
+    sm_tag/neutral/motion16,
+    sm_tag/neutral/motion17,
+    sm_tag/neutral/motion18,
+    sm_tag/neutral/motion19,
+    sm_tag/neutral/motion20,
+    sm_tag/neutral/motion21,
+    sm_tag/neutral/motion22,
+]
+
+encourage: [
+    sm_tag/encourage/motion1,
+    sm_tag/encourage/motion2,
+    sm_tag/encourage/motion3,
+]
+
+
+attention: [
+    sm_tag/attention/motion1,
+    sm_tag/attention/motion2,
+    sm_tag/attention/motion3,
+    sm_tag/attention/motion4,
+    sm_tag/attention/motion5,
+    sm_tag/attention/motion6,
+]
+
+consolation: [
+    sm_tag/consolation/motion1,
+    sm_tag/consolation/motion2,
+    sm_tag/consolation/motion3,
+    sm_tag/consolation/motion4,
+    sm_tag/consolation/motion5,
+]
+
+greeting: [
+    sm_tag/greeting/motion1,
+    sm_tag/greeting/motion2,
+    sm_tag/greeting/motion3,
+    sm_tag/greeting/motion4,
+]
+
+waiting: [
+    sm_tag/waiting/motion1,
+    sm_tag/waiting/motion2,
+    sm_tag/waiting/motion3,
+    sm_tag/waiting/motion4,
+]
+
+advice: [
+    sm_tag/advice/motion1,
+    sm_tag/advice/motion2,
+    sm_tag/advice/motion3,
+    sm_tag/advice/motion4,
+]
+
+praise: [
+    sm_tag/praise/motion1,
+    sm_tag/praise/motion2,
+    sm_tag/praise/motion3,
+    sm_tag/praise/motion4,
+]
+
+command: [
+    sm_tag/command/motion1,
+    sm_tag/command/motion2,
+    sm_tag/command/motion3,
+    sm_tag/command/motion4,
+]
+
+user_defined: [
+    sm_tag/user_defined/angry,
+    sm_tag/user_defined/bye,
+    sm_tag/user_defined/cheerup,
+    sm_tag/user_defined/disgusted,
+    sm_tag/user_defined/fearful,
+    sm_tag/user_defined/goodjob,
+    sm_tag/user_defined/happy,
+    sm_tag/user_defined/hello,
+    sm_tag/user_defined/lookatme,
+    sm_tag/user_defined/myturn,
+    sm_tag/user_defined/nevernoway,
+    sm_tag/user_defined/no,
+    sm_tag/user_defined/pleasebequiet,
+    sm_tag/user_defined/sad,
+    sm_tag/user_defined/surprise,
+    sm_tag/user_defined/yes,
+]

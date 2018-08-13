@@ -58,6 +58,13 @@ affirm: [
     sm_tag/waiting/motion4,
 ]
 
+confirm: [
+    sm_tag/waiting/motion1,
+    sm_tag/waiting/motion2,
+    sm_tag/waiting/motion3,
+    sm_tag/waiting/motion4,
+]
+
 cant_understand: [
     sm_tag/command/motion1,
     sm_tag/command/motion2,

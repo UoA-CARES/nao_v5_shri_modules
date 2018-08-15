@@ -12,6 +12,7 @@ from threading import Thread
 from naoqi_driver.naoqi_node import NaoqiNode
 from naoqi import (ALModule, ALBroker, ALProxy)
 from mind_msgs.msg import RenderItemAction, RenderItemResult, RenderItemFeedback
+from std_msgs.msg import Empty
 
 
 class NaoFace(NaoqiNode):
@@ -35,6 +36,9 @@ class NaoFace(NaoqiNode):
         random.seed(rospy.Time.now().to_nsec())
         self.current_eye_color = self.eye_color['neutral']
         self.last_eye_color = self.current_eye_color
+
+        rospy.Subscriber('sp_speech_recognizer/stop', Empty, self.handle_stop_recognition)
+        rospy.Subscriber('sp_speech_recognizer/start', Empty, self.handle_start_recognition)
 
         self.server = actionlib.SimpleActionServer('render_facial_expression', RenderItemAction, self.execute_callback, False)
         self.server.start()
@@ -60,6 +64,12 @@ class NaoFace(NaoqiNode):
             self.proxy.fadeRGB("FaceLeds", self.current_eye_color, rDuration)
 
             time.sleep(3)
+
+    def handle_stop_recognition(self, msg):
+        self.current_eye_color = int(int(255) << 16 | int(255) << 8 | int(255))
+
+    def handle_start_recognition(self, msg):
+        self.current_eye_color = int(int(85) << 16 | int(170) << 8 | int(255))
 
     def execute_callback(self, goal):
         result = RenderItemResult()

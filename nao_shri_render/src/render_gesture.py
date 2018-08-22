@@ -156,15 +156,15 @@ class NaoBehaviors(NaoqiNode):
 
             try:
                 point_transformed = self.tf_buf.transform(target, 'torso')
-                self.motionProxy.pointAt("RArm", [point_transformed.point.x, point_transformed.point.y, point_transformed.point.z], 0, 0.2)
+                self.motionProxy.pointAt("RArm", [point_transformed.point.x, point_transformed.point.y, point_transformed.point.z], 0, 0.3)
+                rospy.sleep(1)
             except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
                 rospy.logwarn('The transform information can not find with /RShoulder and target point...')
                 succeed = False
 
         else:
+            rospy.sleep(1.0)
             succeed = False
-
-        rospy.sleep(1)
 
         if succeed:
             result.result = True

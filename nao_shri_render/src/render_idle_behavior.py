@@ -46,7 +46,7 @@ class IdleMotion:
         rospy.loginfo('[%s] is starting the idle motion.' % rospy.get_name())
 
         self.motionProxy.setBreathEnabled('Body', True)
-        self.motionProxy.setBreathEnabled('Head', False)        
+        self.motionProxy.setBreathEnabled('Head', False)
         self.motionProxy.setBreathConfig([['Bpm', 12], ['Amplitude', 0.8]])
 
         rospy.spin()
@@ -84,7 +84,7 @@ class IdleMotion:
         self.motionProxy.setBreathEnabled('Legs', False)
 
         self.postureProxy.goToPosture("Stand", 0.2)
-    
+
         self.motionProxy.rest()
         print self.motionProxy.getSummary()
 
@@ -114,13 +114,14 @@ class IdleMotion:
                 rospy.sleep(0.2)
 
         else:
-            self.postureProxy.goToPosture("Stand", 0.2)
+            if self.enable_leaning_forward:
+                self.postureProxy.goToPosture("Stand", 0.2)
 
             self.motionProxy.setBreathEnabled('Body', False)
             self.motionProxy.setBreathEnabled('Head', False)
 
             if self.enable_leaning_forward:
-                self.motionProxy.setBreathEnabled('Legs', False)            
+                self.motionProxy.setBreathEnabled('Legs', False)
 
 
 if __name__ == '__main__':
